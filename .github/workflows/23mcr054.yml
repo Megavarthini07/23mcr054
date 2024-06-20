@@ -1,8 +1,18 @@
-name: hello-world
+name: roll-number-tasks
 'on': push
 jobs:
-  my-job:
+  perform-tasks:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Create a file with the roll number as the name
+        run: |
+          roll_number="23mcr054"
+          touch "${roll_number}.txt"
+      - name: Print the current working directory
+        run: pwd
+      - name: List all files and directories with detailed information
+        run: ls -la
+      - name: Display the current date and time
+        run: date
